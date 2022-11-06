@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2 style="text-align: center;">Lista de Alunos</h2>
+<hr>
+<a href="{{url_for('cria_alunos')}}" class="btn btn-secondary">Adcionar Aluno</a>
+<br>
+<br>
+<table class='table table-bordered table-hover'>
+    <thead class='table-dark'>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope='col'>NOME</th>
+            <th scope='col'>MATERIA</th>
+        </tr>
+    </thead>
+        <tbady>
+        <tr>
+            {% for aluno in alunos %}
+                <tr>
+                    <td>{{aluno.id}}</td>
+                    <td>{{aluno.nome}}</td>
+                    <td>{{aluno.materia}}</td>
+                </tr>
+            {% endfor %}
+        </tr>
+    </tbady>
+</table>
+
+{% endblock conteudo %} 

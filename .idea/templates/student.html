@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h1 style="text-align: center;">Cadastre novo Aluno</h1>
+<hr>
+
+<ul>
+    {% for registro in registros %}
+        <p>
+          <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample_{{registro.aluno}}" role="button" aria-expanded="false" aria-controls="collapseExample_{{registro.aluno}}">
+            {{registro.aluno}}
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample_{{registro.aluno}}">
+          <div class="card card-body">
+            {{registro.idd}}
+          </div>
+        </div>
+
+    {% endfor %}
+    <form action="{{url_for('student')}}" method="POST">
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" name="aluno" placeholder="Digite nome do aluno" required>
+        </div>
+        <div class="form-group">
+            <label>Idade</label>
+            <input type="text" class="form-control" name="idd" placeholder="Digite a idade do aluno" required>
+        </div>
+        <button class="btn btn-success">Gravar</button>
+    </form>
+</ul>
+{% endblock conteudo %}

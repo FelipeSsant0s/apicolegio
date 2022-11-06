@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2 style="text-align: center;">Cadastro Novo Professor</h2>
+<hr>
+
+<ul class="list-group">
+    {% for armazenamento in armazenamentos %}
+        <p>
+          <a class="btn btn-secondary" data-bs-toggle="collapse" href="#collapseExample_{{armazenamento.profer}}" role="button" aria-expanded="false" aria-controls="collapseExample_{{armazenamento.profer}}">
+            {{armazenamento.profer}}
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample_{{armazenamento.profer}}">
+          <div class="card card-body">
+            {{armazenamento.mater}}
+          </div>
+        </div>
+    {% endfor %}
+    <form action="{{url_for('principal')}}" method="POST">
+        <div class="form-group">
+            <label>Professor</label>
+            <input type="text" name="profer" class="form-control" placeholder="Digite o nome do Professor" required>
+        </div>
+        <div class="form-group">
+            <label>Materia</label>
+            <input type="text" name="mater" class="form-control" placeholder="Digite a materia do Professor" required>
+        </div>
+        <button class="btn btn-success">Gravar</button>
+    </form>
+</ul>
+
+{% endblock conteudo %}
